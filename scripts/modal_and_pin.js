@@ -5,7 +5,7 @@ document.querySelector('.add_pin').addEventListener('click', () => {
 });
 
 document.querySelector('.add_pin_modal').addEventListener('click', () => {
-    if (event.target === add_pin_modal) {
+    if (EventTarget === add_pin_modal) {
         reset_modal();
     }
 });
