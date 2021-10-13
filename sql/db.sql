@@ -15,7 +15,8 @@ CREATE TABLE `images` (
  `image_id` int(10) NOT NULL,
  `image` longblob NOT NULL,
  `size` varchar(10) NOT NULL,
- `user_id` int(10) NOT NULL
+ `user_email` varchar(50) NOT NULL,
+ `title` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 ALTER TABLE `images`

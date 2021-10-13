@@ -1,4 +1,3 @@
-
 <?php 
 // Include the database configuration file  
 require_once 'db.php'; 
@@ -10,14 +9,17 @@ if(isset($_POST["save_pin_name"])){
     if(!empty($_FILES["image"]["name"])) { 
         // Get file info 
         $fileName = basename($_FILES["image"]["name"]); 
-        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
-         
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+        $image_size = $_POST["pin_size"][0];
+      
         // Allow certain file formats 
         $allowTypes = array('jpg','png','jpeg','gif','jfif'); 
         if(in_array($fileType, $allowTypes)){ 
             $image = $_FILES['image']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
-            $insert = $con->query("INSERT into `images` (image_id,image,user_id) VALUES (NULL,'$imgContent',1)"); 
+            
+            
+            $insert = $con->query("INSERT into `images` (image_id,image,user_email,size,title) VALUES (NULL,'$imgContent','mak@gmail.com',$image_size,'abcd')"); 
             if($insert){ 
                 $status = 'success'; 
                 $statusMsg = "File uploaded successfully."; 
