@@ -21,6 +21,5 @@ CREATE TABLE `images` (
 ALTER TABLE `images`
   ADD PRIMARY KEY (`image_id`);
 
-
 ALTER TABLE `images`
   MODIFY `image_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;

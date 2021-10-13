@@ -10,14 +10,16 @@ if(isset($_POST["save_pin_name"])){
     if(!empty($_FILES["image"]["name"])) { 
         // Get file info 
         $fileName = basename($_FILES["image"]["name"]); 
-        $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+        $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+        
          
         // Allow certain file formats 
         $allowTypes = array('jpg','png','jpeg','gif','jfif'); 
         if(in_array($fileType, $allowTypes)){ 
             $image = $_FILES['image']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
-            $insert = $con->query("INSERT into `images` (image_id,image,user_id) VALUES (NULL,'$imgContent',1)"); 
+            $image_size = basename($_FILES["pin_size"]["name"]);
+            $insert = $con->query("INSERT into `images` (image_id,image,user_id,size) VALUES (NULL,'$imgContent',1,$image_size)"); 
             if($insert){ 
                 $status = 'success'; 
                 $statusMsg = "File uploaded successfully."; 
