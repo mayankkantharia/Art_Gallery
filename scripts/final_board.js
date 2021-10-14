@@ -49,7 +49,7 @@ document.querySelector('#upload_img') / addEventListener('change', event => {
     pinAdded = true;
 });
 
-document.querySelector('.save_pin').addEventListener('click', () => {
+document.querySelector('.save_pin_name').addEventListener('click', () => {
     const users_data = {
         author: 'Mayank',
         board: 'default',
