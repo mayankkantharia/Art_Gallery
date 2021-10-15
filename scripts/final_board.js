@@ -2,6 +2,7 @@ const add_pin_modal = document.querySelector('.add_pin_modal');
 var pinAdded = false;
 document.querySelector('.add_pin').addEventListener('click', () => {
     add_pin_modal.style.opacity = 1;
+    add_pin_modal.style.position = 'fixed';
     add_pin_modal.style.pointerEvents = 'all';
 });
 
@@ -32,9 +33,7 @@ document.querySelector('#upload_img') / addEventListener('change', event => {
                     if (new_image.getBoundingClientRect().width >= new_image.getBoundingClientRect().height) {
                         new_image.classList.remove('pin_max_width');
                         new_image.classList.add('pin_fit_img');
-                    } else
-
-                    if (new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width || new_image.getBoundingClientRect().height < new_image.parentElement.getBoundingClientRect().height) {
+                    } else if (new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width || new_image.getBoundingClientRect().height < new_image.parentElement.getBoundingClientRect().height) {
                         new_image.classList.remove('pin_max_width');
                         new_image.classList.add('pin_max_height');
                     }
@@ -49,26 +48,26 @@ document.querySelector('#upload_img') / addEventListener('change', event => {
     pinAdded = true;
 });
 
-document.querySelector('.save_pin_name').addEventListener('click', () => {
-    const users_data = {
-        author: 'Mayank',
-        board: 'default',
-        title: document.querySelector('#pin_title').value,
-        description: document.querySelector('#pin_description').value,
-        destination: document.querySelector('#pin_destination').value,
-        img_blob: pin_image_blob,
-        pin_size: document.querySelector('#pin_size').value
-    }
-    if (pinAdded != false) {
-        create_pin(users_data);
-        reset_modal();
-    }
-    // else if (users_data.pin_size === "") {
-    //     alert("Please select a size for your Image...!");
-    // } else if (pinAdded === false) {
-    //     alert("Please select an Image...!");
-    // }
-});
+// document.querySelector('.save_pin_name').addEventListener('click', () => {
+//     const users_data = {
+//         author: 'Mayank',
+//         board: 'default',
+//         title: document.querySelector('#pin_title').value,
+//         description: document.querySelector('#pin_description').value,
+//         destination: document.querySelector('#pin_destination').value,
+//         img_blob: pin_image_blob,
+//         pin_size: document.querySelector('#pin_size').value
+//     }
+//     if (pinAdded != false) {
+//         create_pin(users_data);
+//         reset_modal();
+//     }
+//     else if (users_data.pin_size === "") {
+//         alert("Please select a size for your Image...!");
+//     } else if (pinAdded === false) {
+//         alert("Please select an Image...!");
+//     }
+// });
 
 function create_pin(pin_details) {
     const new_pin = document.createElement('DIV');

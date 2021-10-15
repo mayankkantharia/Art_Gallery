@@ -15,12 +15,12 @@
 }
 
 .navigation_bar .add_pin {
-    margin-top: 90px;
+    margin-top: 50px;
     /* margin-right: 50px; */
     right: 35px;
     width: 60px;
     height: 60px;
-    position: fixed;
+    position: relative;
     /* top: 10%; */
     /* left: 94%; */
     transition-duration: 0.3s;
@@ -34,13 +34,14 @@
 .add_pin_modal {
     opacity: 0;
     pointer-events: none;
+    position: fixed;
     transition-duration: 0.5s;
 }
 
 .pin_container {
     margin: 0;
     padding: 0;
-    width: 80vw;
+    width: 90vw;
     display: grid;
     grid-template-columns: repeat(auto-fill, var(--card_width));
     grid-auto-rows: var(--row_increment);
