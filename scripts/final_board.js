@@ -2,7 +2,6 @@ const add_pin_modal = document.querySelector('.add_pin_modal');
 var pinAdded = false;
 document.querySelector('.add_pin').addEventListener('click', () => {
     add_pin_modal.style.opacity = 1;
-    add_pin_modal.style.position = 'fixed';
     add_pin_modal.style.pointerEvents = 'all';
 });
 
@@ -107,15 +106,11 @@ function create_pin(pin_details) {
         if (new_image.getBoundingClientRect().width >= new_image.getBoundingClientRect().height) {
             new_image.classList.remove('pin_max_width');
             new_image.classList.add('pin_fit_img');
-        } else
-        if (new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width || new_image.getBoundingClientRect().height < new_image.parentElement.getBoundingClientRect().height) {
+        } else if (new_image.getBoundingClientRect().width < new_image.parentElement.getBoundingClientRect().width || new_image.getBoundingClientRect().height < new_image.parentElement.getBoundingClientRect().height) {
             new_image.classList.remove('pin_max_width');
             new_image.classList.add('pin_max_height');
         }
-
-
         new_pin.style.opacity = 1;
-
     }
 }
 

@@ -38,7 +38,7 @@ $result = $con->query("SELECT * FROM images");
                         <div class="pin_title"><?php echo $row['title']; ?></div>
                         <div class="pin_modal">
                             <div class="modal_head">
-                                <div class="save_card">Save</div>
+                                <button class="save_card btn btn-primary" onclick="download(<?php base64_encode($row['image']);?>)">Save</button>       
                             </div>
                             <div class="modal_foot">
                                 <div class="destination">
@@ -55,15 +55,14 @@ $result = $con->query("SELECT * FROM images");
                                 </div>
                             </div>
                         </div>
-                        <div class="pin_image ">
-                            <img class="pin_max_width pin_fit_img" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>"/>
+                        <div class="pin_image">
+                            <img class="pin_max_width pin_fit_img" id="the_image" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>"/>
                         </div>
                     </div>            
                 <?php } ?>
             <?php }else{ ?> 
                 <p class="status error">Image(s) not found...</p> 
             <?php } ?>
-        
             <div class="add_pin_modal">
                 <div class="add_pin_container">
                     <div class="side" id="left_side">
@@ -116,7 +115,7 @@ $result = $con->query("SELECT * FROM images");
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="./scripts/final_board.js"></script>
-    <script>
+    <script type="text/javascript">
         $("#save_pin_name").click(function(event) {
             var title    = $("#pin_title").val();
             var pin_size = $("#pin_size").val();
@@ -165,7 +164,21 @@ $result = $con->query("SELECT * FROM images");
                     // echo $statusMsg; 
                 ?>
             }
-        })
+        });
+        // function download(my_img){
+        //     axios({
+        //         url: "data:image/jpg;charset=utf8;base64,".my_img,
+        //         method: 'GET',
+        //         responseType: 'blob'
+        //     }).then((response) => {
+        //         const url = window.URL.createObjectURL(new Blob([response.data]));
+        //         const link = document.createElement('a');
+        //         link.href = url;
+        //         link.setAttribute('download', 'image.jpg');
+        //         document.body.appendChild(link);
+        //         link.click();
+        //     })
+        // }   
     </script>
 </body>
 </html>
