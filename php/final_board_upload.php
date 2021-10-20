@@ -19,7 +19,7 @@ if(isset($_POST["save_pin_name"])){
             $imgContent = addslashes(file_get_contents($image)); 
             
             
-            $insert = $con->query("INSERT into `images` (image_id,image,user_email,size,title) VALUES (NULL,'$imgContent','mak@gmail.com',$image_size,'abcd')"); 
+            $insert = $con->query("INSERT into `images` (image_id,image,user_email,size,title) VALUES (NULL,'$imgContent',$_SESSION["email"],$image_size,'abcd')"); 
             if($insert){ 
                 $status = 'success'; 
                 $statusMsg = "File uploaded successfully."; 

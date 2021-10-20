@@ -3,7 +3,7 @@ include "db.php";
 
 session_start ();
 
-if(isset($_POST["userLogin"])){
+// if(isset($_POST["userLogin"])){
     $email = mysqli_real_escape_string ($con, $_POST["userEmail"]);
     $password = md5($_POST["userPassword"]);
 
@@ -26,5 +26,5 @@ if(isset($_POST["userLogin"])){
     ";
     exit();
     }
-}
+// }
 ?>

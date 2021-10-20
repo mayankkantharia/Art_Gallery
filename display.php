@@ -36,7 +36,7 @@ $result = $con->query("SELECT * FROM images");
                                 <div class="pin_icon_container">
                                     <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
                                 </div>
-                                <span><?php echo $row['image_desc']; ?></span>
+                                <span><?php echo $row['title']; ?></span>
                             </div>
                             <div class="pin_icon_container">
                                 <img src="./images/send.png" alt="send" class="pin_icon">

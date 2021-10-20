@@ -45,7 +45,7 @@ $result = $con->query("SELECT * FROM images");
                                     <div class="pin_icon_container">
                                         <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
                                     </div>
-                                    <span><?php echo $row['image_desc']; ?></span>
+                                    <span><?php echo $row['title']; ?></span>
                                 </div>
                                 <div class="pin_icon_container">
                                     <img src="./images/send.png" alt="send" class="pin_icon">
@@ -146,7 +146,7 @@ $result = $con->query("SELECT * FROM images");
                                 $image_size = $_POST['image_pin_size'];
                                 $title      = $_POST['image_title'];
                                 $image_desc = $_POST['image_description'];
-                                $insert = $con->query("INSERT into `images` (`image_id`,`image`,`user_email`,`size`,`title`,`image_desc`) VALUES (NULL,'$imgContent','mak@gmail.com','$image_size','$title','$image_desc')"); 
+                                $insert = $con->query("INSERT into `images` (`image_id`,`image`,`user_email`,`size`,`title`,`image_desc`) VALUES (NULL,'$imgContent','vatsal@gmail.com','$image_size','$title','$image_desc')"); 
                                 if($insert){ 
                                     $status = 'success'; 
                                     $statusMsg = "File uploaded successfully."; 

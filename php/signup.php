@@ -67,12 +67,8 @@
             $sql = "INSERT INTO `users` (`user_id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$password')";
             $run_query = mysqli_query($con,$sql);
             if ($run_query) {
-                echo "
-                <div class='alert alert-success'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <b>Account is created succesfully</b>
-                </div>
-                ";
+                $_SESSION['email'] = $email; 
+                echo "signupsuccess";
             }
         }
     }

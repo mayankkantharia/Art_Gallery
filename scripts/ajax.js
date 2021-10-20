@@ -20,6 +20,9 @@ $(document).ready(function() {
             method: "POST",
             data: $("form").serialize(),
             success: function(data) {
+                if (data == "signupsuccess") {
+                    window.location.href = "final_board.php";
+                }
                 $("#signup_msg").html(data);
             }
         })
@@ -44,10 +47,10 @@ $(document).ready(function() {
         $.ajax({
             url: "php/login.php",
             method: "POST",
-            data: { userLogin: 1, userEmail: email, userPassword: pass },
+            data: {  userEmail: email, userPassword: pass },
             success: function(data) {
                 if (data == "loginsuccess") {
-                    window.location.href = "image.html";
+                    window.location.href = "final_board.php";
                 }
                 $("#signup_msg").html(data);
             }
