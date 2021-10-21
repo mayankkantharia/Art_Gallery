@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="login_content col-sm-10 col-md-4">
-                <form onsubmit="return false" id="login">
+                <form action="login.php" method="post" id="login">
                     <h1 class="head">Login</h1>
                     <label for="email" class="labels">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required />
@@ -39,7 +39,7 @@
                     <input type="checkbox" onclick="myFunction1()">Show Password
                     <div class="row login_signup_btns">
                         <div class="col-md-12">
-                            <input type="submit" class="btn btn-success center-block login_btn" id="Login" value="Login">
+                            <input type="submit" class="btn btn-success center-block login_btn" name="login" value="Login">
                         </div>
                     </div>
                 </form>

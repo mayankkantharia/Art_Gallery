@@ -42,7 +42,7 @@ $(document).ready(function() {
         var email = $("#email").val();
         var pass = $("#password").val();
         $.ajax({
-            url: "php/login.php",
+            url: "login.php",
             method: "POST",
             data: { userEmail: email, userPassword: pass },
             success: function(data) {
