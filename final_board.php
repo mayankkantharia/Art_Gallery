@@ -1,9 +1,12 @@
 <?php 
 // Include the database configuration file  
-require_once 'php/db.php'; 
+include 'php/db.php'; 
  
 // Get image data from database 
-$result = $con->query("SELECT * FROM images"); 
+session_start();
+$myemail = $_SESSION["email"];
+$result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'"); 
+
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +33,7 @@ $result = $con->query("SELECT * FROM images");
     <!-- <form action="php/final_board_upload.php" method="post" enctype="multipart/form-data"> -->
     <form method="post" action="" enctype="multipart/form-data">
         <div class="pin_container">
-            <?php if($result->num_rows > 0){ ?>             
+            <?php if($result){ ?>             
                 <?php while($row = $result->fetch_assoc()){ ?> 
                     <!-- <h1  ><?php echo $row['size']; ?> </h1> -->
                     <!-- <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" height="300" width="300"/>    -->
@@ -127,10 +130,7 @@ $result = $con->query("SELECT * FROM images");
             }
             else
             {
-                <?php 
-                    // Include the database configuration file  
-                    require_once 'php/db.php';                    
-                    // If file upload form is submitted 
+                <?php
                     $status = $statusMsg = ''; 
                     if(isset($_POST["save_pin_name"])){ 
                         $status = 'error'; 
@@ -146,10 +146,12 @@ $result = $con->query("SELECT * FROM images");
                                 $image_size = $_POST['image_pin_size'];
                                 $title      = $_POST['image_title'];
                                 $image_desc = $_POST['image_description'];
-                                $insert = $con->query("INSERT into `images` (`image_id`,`image`,`user_email`,`size`,`title`,`image_desc`) VALUES (NULL,'$imgContent','vatsal@gmail.com','$image_size','$title','$image_desc')"); 
+                                $insert = $con->query("INSERT into `images` (`image_id`,`image`,`user_email`,`size`,`title`,`image_desc`) VALUES (NULL,'$imgContent','$myemail','$image_size','$title','$image_desc')"); 
                                 if($insert){ 
                                     $status = 'success'; 
-                                    $statusMsg = "File uploaded successfully."; 
+                                    $statusMsg = "File uploaded successfully.";                                    
+                                    // header_remove('location: final_board.php'); 
+                                    header('location: final_board.php'); 
                                 }else{ 
                                     $statusMsg = "File upload failed, please try again."; 
                                 }  

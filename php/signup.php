@@ -63,7 +63,7 @@
             ";
             exit();
         } else {
-            $password = md5($password);
+            $password = $password;
             $sql = "INSERT INTO `users` (`user_id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$password')";
             $run_query = mysqli_query($con,$sql);
             if ($run_query) {
@@ -72,5 +72,4 @@
             }
         }
     }
-
 ?>
