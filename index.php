@@ -21,26 +21,26 @@ $result = $con->query("SELECT * FROM images");
     <link rel="stylesheet" href="./styles/final_board.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Art Gallery</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="/">My Gallery <span class="sr-only"></span></a>
-                </li>
-
-            </ul>
+        <div class="container-fluid" >
+            <div></div>
+            <div>
+            <button type="button" class="btn btn-success mr-2">
+                <a href="login.html" class="nav-buttons">Login</a>
+            </button>
+            <button type="button" class="btn btn-success mr-2">
+                <a href="signup.html"  class="nav-buttons">SignUp</a>
+            </button>
+            </div>
         </div>
-        <div class="pin_icon_container add_pin">
-            <img src="./images/add.png" alt="add_pin" class="pin_icon">
-        </div>
-        <button type="button" class="btn btn-success mr-2"> <a href="php/logout.php">
+        <!-- <button type="button" class="btn btn-success mr-2"> <a href="php/logout.php">
             Logout
-        </a></button>
+        </a></button> -->
         </div>
     </nav>
     <div class="pin_container">
