@@ -3,6 +3,9 @@
 require_once 'php/db.php'; 
  
 // Get image data from database 
+session_start();
+$myemail = $_SESSION["email"];
+$myname = $_SESSION["name"]; 
 $result = $con->query("SELECT * FROM images"); 
 ?>
 <!DOCTYPE html>
@@ -21,27 +24,35 @@ $result = $con->query("SELECT * FROM images");
     <link rel="stylesheet" href="./styles/final_board.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">Art Gallery</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="/">My Gallery <span class="sr-only"></span></a>
+                    <a class="nav-link" href="./final_board.php">My Gallery<span class="sr-only"></span></a>
                 </li>
-
+                <li class="nav-item ">
+                    <a class="nav-link" href="./display.php">Home<span class="sr-only"></span></a>
+                </li>
             </ul>
         </div>
-        <div class="pin_icon_container add_pin">
-            <img src="./images/add.png" alt="add_pin" class="pin_icon">
+        <div>
+            <h5 class="user_welcome" style="color: cyan; margin-right:30px">
+                Welcome <?php echo $myname ?>
+            </h5>
         </div>
-        <button type="button" class="btn btn-success mr-2"> <a href="php/logout.php">
+        <div class="my_pin_add">
+            <div class="pin_icon_container add_pin">
+                <img src="./images/add.png" alt="add_pin" class="pin_icon">
+            </div>
+        </div>
+        <a href="php/logout.php" type="button" class="btn btn-success mr-2"  
+            style="text-decoration: none; color:white; margin-left: 30px;" >
             Logout
-        </a></button>
-        </div>
+        </a>
     </nav>
     <div class="pin_container">
         <?php if($result->num_rows > 0){ ?>             

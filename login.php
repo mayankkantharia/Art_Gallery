@@ -44,6 +44,7 @@ if(isset($_POST["userEmail"])){
             // echo "Login Successful";
             $row  = mysqli_fetch_array($result);
             $_SESSION["email"]=$row['email'];
+            $_SESSION["name"]=$row['name'];
             header('location: final_board.php');
         }else{
             // header('location:register.html');

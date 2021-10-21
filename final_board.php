@@ -5,6 +5,7 @@ include 'php/db.php';
 // Get image data from database 
 session_start();
 $myemail = $_SESSION["email"];
+$myname = $_SESSION["name"];
 $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'"); 
 
 ?>
@@ -27,27 +28,40 @@ $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Art Gallery</a>
+        <a class="navbar-brand" href="" style="color: cyan;">Art Gallery</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
-                    <a class="nav-link" href="/">My Gallery <span class="sr-only"></span></a>
+                    <a class="nav-link" href="./final_board.php">My Gallery<span class="sr-only"></span></a>
                 </li>
-
+                <li class="nav-item ">
+                    <a class="nav-link" href="./display.php">Home<span class="sr-only"></span></a>
+                </li>
             </ul>
         </div>
+        <div>
+            <h5 class="user_welcome" style="color: cyan; margin-right:30px">
+                Welcome <?php echo $myname ?>
+            </h5>
+        </div>
+        <div class="my_pin_add">
+            <div class="pin_icon_container add_pin">
+                <img src="./images/add.png" alt="add_pin" class="pin_icon">
+            </div>
+        </div>
+        <a href="php/logout.php" type="button" class="btn btn-success mr-2"  
+            style="text-decoration: none; color:white; margin-left: 30px;" >
+            Logout
+        </a>
+    </nav>
+    <!-- <div class="navigation_bar">
         <div class="pin_icon_container add_pin">
             <img src="./images/add.png" alt="add_pin" class="pin_icon">
         </div>
-        <button type="button" class="btn btn-success mr-2"> <a href="php/logout.php">
-            Logout
-        </a></button>
-        </div>
-    </nav>
+    </div>  -->
     <form method="post" action="" enctype="multipart/form-data">
         <div class="pin_container">
             <?php if($result){ ?>             
@@ -125,7 +139,6 @@ $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'
                         <div class="section2">
                             <input name="image_title" placeholder="Add Your Title" type="text" class="new_pin_input" id="pin_title">
                             <input name="image_description" placeholder="Tell everyone what your image is about" type="text" class="new_pin_input" id="pin_description">
-                            <!-- <input placeholder="Add a destination link" type="text" class="new_pin_input" id="pin_destination"> -->
                         </div>
                     </div>
                 </div>
@@ -183,21 +196,7 @@ $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'
                     // echo $statusMsg; 
                 ?>
             }
-        });
-        // function download(my_img){
-        //     axios({
-        //         url: "data:image/jpg;charset=utf8;base64,".my_img,
-        //         method: 'GET',
-        //         responseType: 'blob'
-        //     }).then((response) => {
-        //         const url = window.URL.createObjectURL(new Blob([response.data]));
-        //         const link = document.createElement('a');
-        //         link.href = url;
-        //         link.setAttribute('download', 'image.jpg');
-        //         document.body.appendChild(link);
-        //         link.click();
-        //     })
-        // }   
+        });   
     </script>
     <?php mysqli_close($con); ?>
 </body>

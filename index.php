@@ -21,26 +21,17 @@ $result = $con->query("SELECT * FROM images");
     <link rel="stylesheet" href="./styles/final_board.css">
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Art Gallery</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="">Welcome To Art Gallery</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="container-fluid" >
             <div></div>
             <div>
-            <button type="button" class="btn btn-success mr-2">
-                <a href="login.html" class="nav-buttons">Login</a>
-            </button>
-            <button type="button" class="btn btn-success mr-2">
-                <a href="signup.html"  class="nav-buttons">SignUp</a>
-            </button>
+                <a href="login.html" type="button" class="btn btn-success mr-2">Login</a>
+                <a href="signup.html" type="button" class="btn btn-success mr-2">SignUp</a>
             </div>
-        </div>
-        <!-- <button type="button" class="btn btn-success mr-2"> <a href="php/logout.php">
-            Logout
-        </a></button> -->
         </div>
     </nav>
     <div class="pin_container">

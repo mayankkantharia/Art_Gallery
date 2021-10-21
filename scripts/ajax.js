@@ -1,18 +1,5 @@
 $(document).ready(function() {
 
-    // product();
-
-    // function product() {
-    //     $.ajax({
-    //         url: "action.php",
-    //         method: "POST",
-    //         data: { getproduct: 1 },
-    //         success: function (data) {
-    //             $("#get_product").html(data);
-    //         }
-    //     })
-    // }
-
     $("#signup_button").click(function(event) {
         event.preventDefault();
         $.ajax({
@@ -56,8 +43,6 @@ $(document).ready(function() {
             }
         })
     })
-
-
     page();
 
     function page() {
