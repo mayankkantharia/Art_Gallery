@@ -71,9 +71,9 @@ $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'
                     <div class="card card_<?php echo $row['size'];?> ">
                         <div class="pin_title"><?php echo $row['title']; ?></div>
                         <div class="pin_modal">
-                            <div class="modal_head">
+                            <!-- <div class="modal_head">
                                 <button class="save_card btn btn-primary" onclick="download(<?php base64_encode($row['image']);?>)">Save</button>       
-                            </div>
+                            </div> -->
                             <div class="modal_foot">
                                 <div class="destination">
                                     <div class="pin_icon_container">
@@ -82,11 +82,11 @@ $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'
                                     <span><?php echo $row['title']; ?></span>
                                 </div>
                                 <div class="pin_icon_container">
-                                    <img src="./images/send.png" alt="send" class="pin_icon">
+                                <img src="./images/send.png" alt="send" remove_id="$row['image']" id="delete_image" class="pin_icon remove">
                                 </div>
-                                <div class="pin_icon_container">
+                                <!-- <div class="pin_icon_container">
                                     <img src="./images/ellipse.png" alt="dot" class="pin_icon">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="pin_image">

@@ -15,6 +15,21 @@ $(document).ready(function() {
         })
     })
 
+    $("#delete_image").click(function(event){
+        event.preventDefault();
+		var remove = $(this).parent().parent().parent();
+		var remove_id = remove.find(".remove").attr("remove_id");
+        console.log(remove_id);
+		$.ajax({
+			url	:	"action.php",
+			method	:	"POST",
+			data	:	{removeImage:1,rid:remove_id},
+			success	:	function(data){
+				alert('deleted');
+			}
+		})
+	})
+
     $("#upload_image").click(function(event) {
         event.preventDefault();
         $.ajax({

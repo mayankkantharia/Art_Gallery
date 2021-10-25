@@ -3,6 +3,20 @@
 session_start();
 include "db.php";
 
+if (isset($_POST["removeImage"])) {
+	$remove_id = $_POST["rid"];
+	if (isset($_SESSION["uid"])) {
+		$sql = "DELETE FROM images WHERE image_id = '$remove_id'";
+	}
+	if(mysqli_query($con,$sql)){
+		echo "<div class='alert alert-danger'>
+						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+						<b>Image is deleted</b>
+				</div>";
+		exit();
+	}
+}
+
 if(isset($_POST["page"])){
 	$sql = "SELECT * FROM products";
 	$run_query = mysqli_query($con,$sql);
