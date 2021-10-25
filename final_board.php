@@ -4,7 +4,7 @@
     $myemail = $_SESSION["email"];
     $myname = $_SESSION["name"];
     $result = mysqli_query($con, "SELECT * FROM images WHERE user_email = '$myemail'"); 
-    if(isset($_POST["save_pin_name"])){ 
+    if(isset($_POST["save_pin_name"]) && isset($_POST['image_pin_size'])){ 
         $status = $statusMsg = ''; 
         $status = 'error'; 
         if(!empty($_FILES["image"]["name"])) { 
@@ -21,6 +21,7 @@
                 if($insert){ 
                     $status = 'success'; 
                     $statusMsg = "File uploaded successfully.";
+                    header('location: final_board.php');
                 }else{ 
                     $statusMsg = "File upload failed, please try again."; 
                 }  
@@ -30,6 +31,8 @@
         }else{ 
             $statusMsg = 'Please select an image file to upload.'; 
         } 
+    }else{
+        $statusMsg = 'Please select all inputs';
     }    
 ?>
 <!DOCTYPE html>
@@ -81,21 +84,6 @@
             </div>
         </div>
     </nav>
-    <?php        
-        if(isset($status) && ($status == 'error')){
-            echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            '.$statusMsg.'
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }else if(isset($status) && ($status == 'success')){
-            echo '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-            '.$statusMsg.'
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
-    ?> 
     <form method="post" action="" enctype="multipart/form-data">
         <div class="pin_container">
             <?php if($result){ ?>             
@@ -106,13 +94,13 @@
                             <div class="modal_foot">
                                 <div class="destination">
                                     <div class="pin_icon_container">
-                                        <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
+                                        <img src="./images/ellipse.png" alt="destination" class="pin_icon">
                                     </div>
                                     <span><?php echo $row['title']; ?></span>
                                 </div>
                                 <div class="pin_icon_container">
                                     <button class="btn btn-danger" name="delete_image"  value="<?php echo $row['image_id']; ?>">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="fas fa-trash-alt" style="color: white;"></i>
                                     </button>
                                 </div>
                             </div>
@@ -138,11 +126,9 @@
                                 <label for="upload_img" id="upload_img_label">
                                     <div class="upload_img_container">
                                         <div id="dotted_border">
-                                            <div class="pin_icon_container">
-                                                <img src="./images/up-arrow.png" alt="upload_img" class="pin_icon">
-                                            </div>
-                                            <div>Choose an image to Upload</div>
-                                            <div id="recommendation">Recommendation: Use high-quality .jpg files less than 20 mb.</div>
+                                            
+                                            <div>Choosen image will appear here.</div>
+                                            
                                         </div>
                                     </div>
                                 </label>
@@ -156,7 +142,7 @@
                             <div class="section1">
                                 <div class="dropdown select_size">
                                     <select name="image_pin_size" id="pin_size" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option value="" disabled selected>Select</option>
+                                    <option value="select" disabled selected>Select</option>
                                     <option value="small" >Small</option>
                                     <option value="medium" >Medium</option>
                                     <option value="large" >Large</option>
@@ -178,5 +164,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="scripts/final_board.js"></script>
     <script src="scripts/ajax.js"></script>
+    <!-- <script>
+        $("#save_pin_name").click(function(event) {
+            var title    = $("#pin_title").val();
+            var pin_size = $("#pin_size").val();
+            if(pin_size === ""){
+                alert("Please select a size...!");
+            }
+            else if(title === ""){
+                alert("Please give a title...!");                
+            }
+        });
+    </script> -->
 </body>
 </html>

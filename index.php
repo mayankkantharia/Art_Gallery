@@ -52,7 +52,7 @@ $result = $con->query("SELECT * FROM images");
                         <div class="modal_foot">
                             <div class="destination">
                                 <div class="pin_icon_container">
-                                    <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
+                                    <img src="./images/ellipse.png" alt="destination" class="pin_icon">
                                 </div>
                                 <span><?php echo $row['title']; ?></span>
                             </div>
