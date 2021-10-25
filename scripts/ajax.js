@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("#signup_button").click(function(event) {
         event.preventDefault();
         $.ajax({
-            url: "php/signup.php",
+            url: "signup.php",
             method: "POST",
             data: $("form").serialize(),
             success: function(data) {
@@ -15,20 +15,21 @@ $(document).ready(function() {
         })
     })
 
-    $("#delete_image").click(function(event){
-        event.preventDefault();
-		var remove = $(this).parent().parent().parent();
-		var remove_id = remove.find(".remove").attr("remove_id");
-        console.log(remove_id);
-		$.ajax({
-			url	:	"action.php",
-			method	:	"POST",
-			data	:	{removeImage:1,rid:remove_id},
-			success	:	function(data){
-				alert('deleted');
-			}
-		})
-	})
+    $("button[name='delete_image']").click(function(e) {
+        e.preventDefault();
+        var id = $(this).val();
+        $.ajax({
+            url: "php/action.php",
+            method: "POST",
+            data: {
+                rid: id
+            },
+            success: function(data) {
+                $("#card_" + id).remove();
+                // alert('deleted');
+            }
+        });
+    });
 
     $("#upload_image").click(function(event) {
         event.preventDefault();
@@ -40,7 +41,7 @@ $(document).ready(function() {
                 $("#signup_msg").html(data);
             }
         })
-    })
+    });
 
     $("#Login").click(function(event) {
         event.preventDefault();
@@ -57,31 +58,7 @@ $(document).ready(function() {
                 $("#signup_msg").html(data);
             }
         })
-    })
-    page();
-
-    function page() {
-        $.ajax({
-            url: "action.php",
-            method: "POST",
-            data: { page: 1 },
-            success: function(data) {
-                $("#pageno").html(data);
-            }
-        })
-    }
-
-    $("body").delegate("#page", "click", function() {
-        var pn = $(this).attr("page");
-        $.ajax({
-            url: "action.php",
-            method: "POST",
-            data: { getproduct: 1, setpage: 1, pageno: pn },
-            success: function(data) {
-                $("#get_product").html(data);
-            }
-        })
-    })
+    });
 });
 
 

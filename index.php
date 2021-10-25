@@ -22,41 +22,39 @@ $result = $con->query("SELECT * FROM images");
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Welcome To Art Gallery</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container-fluid" >
-            <div></div>
-            <div>
-                <a href="login.html" type="button" class="btn btn-success mr-2">Login</a>
-                <a href="signup.html" type="button" class="btn btn-success mr-2">SignUp</a>
+        <div class="container-fluid">
+            <a class="navbar-brand" href=""><h4 style="color: white;">Welcome To Art Gallery</h4></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul>
+                    <li></li>
+                </ul>
+                <div class="container-fluid">
+                <div></div>
+                    <div>
+                        <a href="login.html" type="button" class="btn btn-success mr-2">Login</a>
+                        <a href="signup.html" type="button" class="btn btn-success mr-2">SignUp</a>
+                    </div> 
+                </div>
+            </div>
             </div>
         </div>
     </nav>
     <div class="pin_container">
         <?php if($result->num_rows > 0){ ?>             
             <?php while($row = $result->fetch_assoc()){ ?> 
-                <!-- <h1  ><?php echo $row['size']; ?> </h1> -->
-                <!-- <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" height="300" width="300"/>    -->
                 <div class="card card_<?php echo $row['size'];?> ">
                     <div class="pin_title"><?php echo $row['title']; ?></div>
                     <div class="pin_modal">
-                        <div class="modal_head">
-                            <div class="save_card">Save</div>
-                        </div>
                         <div class="modal_foot">
                             <div class="destination">
                                 <div class="pin_icon_container">
                                     <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
                                 </div>
                                 <span><?php echo $row['title']; ?></span>
-                            </div>
-                            <div class="pin_icon_container">
-                                <img src="./images/send.png" alt="send" class="pin_icon">
-                            </div>
-                            <div class="pin_icon_container">
-                                <img src="./images/ellipse.png" alt="dot" class="pin_icon">
                             </div>
                         </div>
                     </div>

@@ -1,12 +1,9 @@
 <?php 
-// Include the database configuration file  
-require_once 'php/db.php'; 
- 
-// Get image data from database 
-session_start();
-$myemail = $_SESSION["email"];
-$myname = $_SESSION["name"]; 
-$result = $con->query("SELECT * FROM images"); 
+    include 'php/db.php';
+    session_start();
+    $myemail = $_SESSION["email"];
+    $myname = $_SESSION["name"]; 
+    $result = $con->query("SELECT * FROM images"); 
 ?>
 <!DOCTYPE html>
 
@@ -24,59 +21,44 @@ $result = $con->query("SELECT * FROM images");
     <link rel="stylesheet" href="./styles/final_board.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Art Gallery</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./display.php">Art Gallery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
                     <a class="nav-link" href="./final_board.php">My Gallery<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./display.php">Home<span class="sr-only"></span></a>
-                </li>
             </ul>
-        </div>
-        <div>
-            <h5 class="user_welcome" style="color: cyan; margin-right:30px">
-                Welcome <?php echo $myname ?>
-            </h5>
-        </div>
-        <div class="my_pin_add">
-            <div class="pin_icon_container add_pin">
-                <img src="./images/add.png" alt="add_pin" class="pin_icon">
+            <div class="d-flex">
+                <div>
+                    <h5 class="user_welcome" style="color: cyan; margin-right:30px">
+                        Welcome <?php echo $myname ?>
+                    </h5>
+                </div>
+                <a href="php/logout.php" type="button" class="btn btn-success mr-2"  
+                    style="text-decoration: none; color:white; margin-left: 30px;" >
+                    Logout
+                </a>
+            </div>
             </div>
         </div>
-        <a href="php/logout.php" type="button" class="btn btn-success mr-2"  
-            style="text-decoration: none; color:white; margin-left: 30px;" >
-            Logout
-        </a>
     </nav>
     <div class="pin_container">
         <?php if($result->num_rows > 0){ ?>             
-            <?php while($row = $result->fetch_assoc()){ ?> 
-                <!-- <h1  ><?php echo $row['size']; ?> </h1> -->
-                <!-- <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['image']); ?>" height="300" width="300"/>    -->
+            <?php while($row = $result->fetch_assoc()){ ?>
                 <div class="card card_<?php echo $row['size'];?> ">
                     <div class="pin_title"><?php echo $row['title']; ?></div>
                     <div class="pin_modal">
-                        <div class="modal_head">
-                            <div class="save_card">Save</div>
-                        </div>
                         <div class="modal_foot">
                             <div class="destination">
                                 <div class="pin_icon_container">
                                     <img src="./images/upper-right-arrow.png" alt="destination" class="pin_icon">
                                 </div>
                                 <span><?php echo $row['title']; ?></span>
-                            </div>
-                            <div class="pin_icon_container">
-                                <img src="./images/send.png" alt="send" class="pin_icon">
-                            </div>
-                            <div class="pin_icon_container">
-                                <img src="./images/ellipse.png" alt="dot" class="pin_icon">
                             </div>
                         </div>
                     </div>
