@@ -125,10 +125,8 @@
                             <div class="section2">
                                 <label for="upload_img" id="upload_img_label">
                                     <div class="upload_img_container">
-                                        <div id="dotted_border">
-                                            
-                                            <div>Choosen image will appear here.</div>
-                                            
+                                        <div id="dotted_border">                                            
+                                            <div>Choosen image will appear here.</div>                                            
                                         </div>
                                     </div>
                                 </label>
@@ -142,7 +140,7 @@
                             <div class="section1">
                                 <div class="dropdown select_size">
                                     <select name="image_pin_size" id="pin_size" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option value="select" disabled selected>Select</option>
+                                    <option value="" disabled selected>Select</option>
                                     <option value="small" >Small</option>
                                     <option value="medium" >Medium</option>
                                     <option value="large" >Large</option>
@@ -164,5 +162,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="scripts/final_board.js"></script>
     <script src="scripts/ajax.js"></script>
+    <script>
+        $("#save_pin_name").click(function(event) {
+            var title    = $("#pin_title").val();
+            var pin_size = $("#pin_size").val();
+            if(pin_size === null) {
+                alert("Please select a size...!");
+            }
+            else if(title === ""){
+                alert("Please give a title...!");                
+            }
+        });
+    </script>
 </body>
 </html>

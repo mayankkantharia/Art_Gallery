@@ -40,7 +40,6 @@ document.querySelector('#upload_img') / addEventListener('change', event => {
                 }
             }
             reader.readAsDataURL(event.target.files[0]);
-
         }
     }
     document.querySelector('#upload_img').value = '';
