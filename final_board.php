@@ -164,17 +164,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="scripts/final_board.js"></script>
     <script src="scripts/ajax.js"></script>
-    <!-- <script>
-        $("#save_pin_name").click(function(event) {
-            var title    = $("#pin_title").val();
-            var pin_size = $("#pin_size").val();
-            if(pin_size === ""){
-                alert("Please select a size...!");
-            }
-            else if(title === ""){
-                alert("Please give a title...!");                
-            }
-        });
-    </script> -->
 </body>
 </html>

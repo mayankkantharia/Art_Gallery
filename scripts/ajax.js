@@ -26,38 +26,8 @@ $(document).ready(function() {
             },
             success: function(data) {
                 $("#card_" + id).remove();
-                // alert('deleted');
             }
         });
-    });
-
-    $("#upload_image").click(function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: "php/upload_image.php",
-            method: "POST",
-            data: $("form").serialize(),
-            success: function(data) {
-                $("#signup_msg").html(data);
-            }
-        })
-    });
-
-    $("#Login").click(function(event) {
-        event.preventDefault();
-        var email = $("#email").val();
-        var pass = $("#password").val();
-        $.ajax({
-            url: "login.php",
-            method: "POST",
-            data: { userEmail: email, userPassword: pass },
-            success: function(data) {
-                if (data == "loginsuccess") {
-                    window.location.href = "final_board.php";
-                }
-                $("#signup_msg").html(data);
-            }
-        })
     });
 });
 

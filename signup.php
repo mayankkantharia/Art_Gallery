@@ -7,7 +7,6 @@
     $confirm_password = $_POST['confirm_password'];
     $nameVal = "/^[a-zA-Z ]+$/";
     $emailValidation = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$/";
-
     if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
         echo 
         '<div class="alert alert-warning alert-dismissible fade show" role="alert">
