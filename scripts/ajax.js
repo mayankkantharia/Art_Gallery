@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $("#signup_button").click(function(event) {
         event.preventDefault();
         $.ajax({
@@ -13,8 +12,7 @@ $(document).ready(function() {
                 $("#signup_msg").html(data);
             }
         })
-    })
-
+    });
     $("button[name='delete_image']").click(function(e) {
         e.preventDefault();
         var id = $(this).val();
